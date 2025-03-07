@@ -20,7 +20,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<String> createUser(@RequestBody RegisterRequest request) {
         userService.createUser(request);
-        return ResponseEntity.ok("User created successfully");
+        return ResponseEntity.ok("User created!");
     }
 
     @GetMapping("/profile")
@@ -34,8 +34,8 @@ public class UserController {
         String username = authentication.getName();
         return ResponseEntity.ok(userService.updateUser(username, dto));
     }
-//    @GetMapping("/{username}")
-//    public ResponseEntity<UserProfileDTO> getUserByUsername(@PathVariable String username) {
-//        return ResponseEntity.ok(userService.getUserProfile(username));
-//    }
+    @GetMapping("/{username}")
+    public ResponseEntity<UserProfileDTO> getUserByUsername(@PathVariable String username) {
+        return ResponseEntity.ok(userService.getUserProfile(username));
+    }
 }
